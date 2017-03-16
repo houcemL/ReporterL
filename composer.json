@@ -1,0 +1,21 @@
+{
+    "name": "lamari/reporter-l",
+    "type": "library",
+    "require": {
+        "php": "5.5.*",
+        "doctrine/doctrine-bundle": "1.3",
+        "doctrine/dbal": "^2.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "houcemL",
+            "email": "h19_86@yahoo.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lamari\\ReporterLBundle\\": ""
+        }
+    }
+}
