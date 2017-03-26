@@ -15,12 +15,19 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class dataFactory
 {
-    public function __construct(Serializer $sirializer, $encoders = array()) {
-        $this->srializer = $sirializer;
-               
+
+    protected $serializer;
+
+    public function __construct(Serializer $sirializer = null, $encoders = array()) {
+        $encoders = array(new XmlEncoder(), new JsonEncoder());
+        $norm = new ObjectNormalizer();
+        $normalizers = array($norm);
+
+        $this->serializer = new Serializer($normalizers, $encoders);
     }
 
     public function serialise($data, $type = 'json') {
-        $this->serializer->serialize($data, $type);
+        return $this->serializer->serialize($data, $type);
     }
+
 }
