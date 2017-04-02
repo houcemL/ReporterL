@@ -8,20 +8,29 @@
 
 namespace Lamari\ReporterLBundle\Tests\DataFactory;
 
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Lamari\ReporterLBundle\DataFactory\dataFactory;
+use PHPUnit\Framework\TestCase;
 
-
-class dataFactoryTest
+class dataFactoryTest extends TestCase
 {
-    public function __construct(Serializer $sirializer, $encoders = array()) {
-        $this->srializer = $sirializer;
-               
+    protected $factory;
+    
+    public function setUp() {
+        $this->factory = new dataFactory();
     }
 
-    public function serialise($data, $type = 'json') {
-        $this->serializer->serialize($data, $type);
+    /**
+     * @dataProvider serializeProvider
+     */
+    public function testserialize($data, $format, $expected) {
+        $formatedData = $this->factory->serialize($data, $format);
+        $this->assertEquals($formatedData, $expected);
     }
+
+    public function serializeProvider() {
+        return [
+            [['name' => 'foo', 'age' => 99, 'sportsman' => false], 'json', '{"name":"foo","age":99,"sportsman":false}']
+        ];
+    }
+
 }

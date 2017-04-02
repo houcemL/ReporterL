@@ -21,9 +21,9 @@ class dataFactory
 
     public function __construct(Serializer $serializer = null, $encoders = array()) {
         
-        if (!is_null($serializer) and ( !$this->supportsDecoding('json')
+        if ((!is_null($serializer) and ( !$this->supportsDecoding('json')
                 or ! $this->supportsDecoding('xml')
-                or ! $this->supportsDecoding('csv'))) {
+                or ! $this->supportsDecoding('csv'))) or is_null($serializer)) {
 
             $encoders = array(new XmlEncoder(), new JsonEncoder(), new CsvEncoder());
 
@@ -37,7 +37,7 @@ class dataFactory
         
     }
 
-    public function serialise($data, $type = 'json') {
+    public function serialize($data, $type = 'json') {
         return $this->serializer->serialize($data, $type);
     }
 
