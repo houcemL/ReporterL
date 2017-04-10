@@ -10,7 +10,7 @@ namespace Lamari\ReporterLBundle\Meta;
  *
  * @author houceml
  */
-interface metaDescriptionInterface 
+interface metaStructureInterface 
 {
     public function getmetaDescription();
     public function alterDescription();
