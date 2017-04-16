@@ -6,5 +6,7 @@ php:
 install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
 script:
-  - ls -l
+  - wget https://phar.phpunit.de/phpunit-4.1.phar
+  - chmod +x phpunit-4.1.phar
+  - sudo mv phpunit-4.1.phar /usr/local/bin/phpunit
   - phpunit --coverage-text --configuration Lamari/ReporterLBundle/phpunit.xml.dist
