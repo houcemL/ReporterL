@@ -6,4 +6,4 @@ php:
 install: composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
 script:
-  - phpunit --coverage-text --configuration $DB/Lamari/ReporterLBundle/phpunit.xml.dist
+  - phpunit --coverage-text --configuration $DBLamari/ReporterLBundle/phpunit.xml.dist
